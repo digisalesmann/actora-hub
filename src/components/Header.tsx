@@ -17,16 +17,6 @@ import {
   BookOpen,
 } from 'lucide-react'
 
-import {
-  RocketIcon,
-  LineChartIcon,
-  UsersIcon,
-  ShieldCheckIcon,
-  BriefcaseIcon,
-  FlameIcon,
-} from 'lucide-react'
-
-
 const productMenu = [
   {
     title: 'Quest',
@@ -98,10 +88,12 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [dropdowns, setDropdowns] = useState({
     product: false,
-    developer: false,
-    gravity: false,
+    explore: false, 
+    ecosystem: false,
     company: false,
   })
+
+  type DropdownKey = keyof typeof dropdowns;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40)
@@ -113,12 +105,13 @@ export default function Header() {
     document.body.style.overflow = menuOpen ? 'hidden' : 'auto'
   }, [menuOpen])
 
-  const toggleDropdown = (section: string) => {
-    setDropdowns((prev) => ({
-      ...prev,
-      [section]: !prev[section],
-    }))
-  }
+const toggleDropdown = (section: DropdownKey) => {
+  setDropdowns((prev) => ({
+    ...prev,
+    [section]: !prev[section],
+  }))
+}
+
 
   return (
     <header
@@ -131,7 +124,7 @@ export default function Header() {
       <div className="max-w-[1200px] mx-auto px-4 md:px-8 py-4 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center">
-          <div className="relative h-[40px] w-[130px] md:h-[60px] md:w-[200px]">
+          <div className="relative h-[56px] w-[180px] md:h-[60px] md:w-[200px]">
             <Image
               src="/actora-logoo.png"
               alt="Actora Logo"
@@ -179,18 +172,18 @@ export default function Header() {
       {menuOpen && (
         <div className="fixed inset-0 z-50 bg-[#0c021f] text-white px-6 py-8 flex flex-col justify-between">
           {/* Top - Logo & Close */}
-          <div className="flex justify-between items-center mb-8">
-          <Link href="/" className="flex items-center">
-            <div className="relative h-[48px] w-[160px] md:h-[60px] md:w-[200px]">
-              <Image
-                src="/actora-logoo.png"
-                alt="Actora Logo"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
-          </Link>
+          <div className="flex justify-between items-center mb-8 px-0">
+            <Link href="/" className="flex items-center ml-[-12px]">
+              <div className="relative h-[48px] w-[160px] md:h-[60px] md:w-[200px]">
+                <Image
+                  src="/actora-logoo.png"
+                  alt="Actora Logo"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+            </Link>
 
             <button onClick={() => setMenuOpen(false)}>
               <X size={28} />
@@ -199,44 +192,43 @@ export default function Header() {
 
           {/* Dropdown Navigation */}
           {[
-  { label: 'Product', items: productMenu },
-  { label: 'Explore', items: exploreMenu },
-  { label: 'Ecosystem', items: ecosystemMenu },
-  { label: 'Company', items: companyMenu },
-].map(({ label, items }) => (
-  <div key={label} className="border-b border-white/10 pb-4">
-    <button
-      onClick={() => toggleDropdown(label.toLowerCase())}
-      className="flex justify-between items-center w-full py-3 text-[17px] font-medium text-white"
-    >
-      {label}
-      {dropdowns[label.toLowerCase() as keyof typeof dropdowns] ? (
-        <ChevronUp className="text-purple-400" />
-      ) : (
-        <ChevronDown className="text-purple-400" />
-      )}
-    </button>
+            { label: 'Product', items: productMenu },
+            { label: 'Explore', items: exploreMenu },
+            { label: 'Ecosystem', items: ecosystemMenu },
+            { label: 'Company', items: companyMenu },
+          ].map(({ label, items }) => (
+            <div key={label} className="border-b border-white/10 pb-2">
+              <button
+                onClick={() => toggleDropdown(label.toLowerCase() as DropdownKey)}
+                className="flex justify-between items-center w-full py-2 text-[15px] font-medium text-white"
+              >
+                {label}
+                {dropdowns[label.toLowerCase() as keyof typeof dropdowns] ? (
+                  <ChevronUp className="text-purple-400" />
+                ) : (
+                  <ChevronDown className="text-purple-400" />
+                )}
+              </button>
 
-    {dropdowns[label.toLowerCase() as keyof typeof dropdowns] && (
-      <div className="mt-2 flex flex-col gap-3">
-        {items.map(({ title, link, icon }) => (
-          <Link
-            key={title}
-            href={link}
-            onClick={() => setMenuOpen(false)}
-            className="flex items-center gap-4 px-2 py-3 rounded-xl hover:bg-white/10 transition"
-          >
-            <div className="w-6 h-6 text-purple-400 flex items-center justify-center">
-              {icon}
+              {dropdowns[label.toLowerCase() as keyof typeof dropdowns] && (
+                <div className="mt-2 flex flex-col gap-3">
+                  {items.map(({ title, link, icon }) => (
+                    <Link
+                      key={title}
+                      href={link}
+                      onClick={() => setMenuOpen(false)}
+                      className="flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-white/10 transition"
+                    >
+                      <div className="w-5 h-5 text-purple-400 flex items-center justify-center">
+                        {icon}
+                      </div>
+                      <span className="text-[14px] text-white font-normal">{title}</span>
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
-            <span className="text-[15px] text-white font-normal">{title}</span>
-          </Link>
-        ))}
-      </div>
-    )}
-  </div>
-))}
-
+          ))}
 
           {/* Buttons */}
           <div className="mt-12 space-y-4">
