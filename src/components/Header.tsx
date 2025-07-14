@@ -170,7 +170,7 @@ const toggleDropdown = (section: DropdownKey) => {
 
       {/* Mobile Menu Fullscreen Drawer */}
       {menuOpen && (
-        <div className="fixed inset-0 z-50 bg-[#0c021f] text-white px-6 py-8 flex flex-col justify-between">
+        <div className="fixed top-0 left-0 w-full h-screen z-[999] bg-[#0c021f] text-white px-6 py-8 flex flex-col justify-between overflow-y-auto">
           {/* Top - Logo & Close */}
           <div className="flex justify-between items-center mb-8 px-0">
             <Link href="/" className="flex items-center ml-[-12px]">
