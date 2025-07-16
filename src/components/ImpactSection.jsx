@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import CountUp from 'react-countup'
 import { motion } from 'framer-motion'
 import { Users, BadgeCheck, Layers, Globe } from 'lucide-react'
@@ -14,6 +15,12 @@ export default function ImpactSection() {
     { name: 'Monad', src: '/logos/mon.svg' },
     { name: 'Labs', src: '/logos/0g.svg' },
   ]
+
+  const formatValue = (value) => {
+    if (value >= 1000000) return (value / 1000000).toFixed(1) + 'm'
+    if (value >= 1000) return (value / 1000).toFixed(1) + 'k'
+    return value
+  }
 
   const stats = [
     { icon: <Users size={28} />, label: 'Users', value: 4000 },
@@ -42,19 +49,22 @@ export default function ImpactSection() {
         {/* Infinite Logos */}
         <div className="overflow-hidden mb-20">
           <div className="relative w-full">
-            <div className="whitespace-nowrap animate-scroll flex gap-20 w-max items-center">
+            <div className="whitespace-nowrap animate-scroll flex gap-12 md:gap-20 w-max items-center">
               {logos.concat(logos).map((logo, i) => (
                 <div
                   key={i}
                   className="flex items-center gap-2 text-white/60 hover:text-white transition min-w-fit"
                 >
-                  <img
+                  <Image
                     src={logo.src}
                     alt={logo.name}
-                    className="h-6 md:h-8 grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition duration-300"
-                    title={logo.name}
+                    width={28}
+                    height={28}
+                    className="grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition duration-300"
                   />
-                  <span className="text-sm md:text-base font-light whitespace-nowrap">{logo.name}</span>
+                  <span className="text-xs md:text-sm font-light whitespace-nowrap">
+                    {logo.name}
+                  </span>
                 </div>
               ))}
             </div>
@@ -72,10 +82,15 @@ export default function ImpactSection() {
               className="flex flex-col items-center"
             >
               <div className="mb-3 text-purple-400">{stat.icon}</div>
-              <div className="text-3xl md:text-5xl font-bold">
-                <CountUp end={stat.value} duration={2} separator="," />
+              <div className="text-2xl md:text-5xl font-bold">
+                <span className="block md:hidden">{formatValue(stat.value)}</span>
+                <span className="hidden md:block">
+                  <CountUp end={stat.value} duration={2} separator="," />
+                </span>
               </div>
-              <div className="text-white/50 text-base mt-1">{stat.label}</div>
+              <div className="text-white/50 text-sm md:text-base mt-1">
+                {stat.label}
+              </div>
             </motion.div>
           ))}
         </div>

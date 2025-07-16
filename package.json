@@ -12,6 +12,7 @@
     "@tsparticles/basic": "^3.8.1",
     "@tsparticles/engine": "^3.8.1",
     "framer-motion": "^12.23.5",
+    "lottie-react": "^2.4.1",
     "lucide-react": "^0.525.0",
     "next": "15.3.5",
     "react": "^19.0.0",
