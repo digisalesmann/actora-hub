@@ -171,13 +171,13 @@ const toggleDropdown = (section: DropdownKey) => {
 
         {/* Mobile Menu Fullscreen Drawer */}
         <AnimatePresence>
-          {menuOpen && (
-            <motion.div
+        {menuOpen && (
+        <motion.div
           key="mobile-menu"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[9999] bg-[#0c021f] text-white px-4 pt-4 pb-6 flex flex-col justify-start overflow-y-auto h-screen"
+          className="fixed inset-0 z-[9999] bg-[#0c021f] text-white px-4 pt-4 pb-6 flex flex-col justify-between overflow-y-auto h-screen"
         >
         {/* Sticky Header */}
         <div className="sticky top-0 bg-[#0c021f] z-10 pb-4">
