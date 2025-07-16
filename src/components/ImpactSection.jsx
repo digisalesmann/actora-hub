@@ -60,7 +60,7 @@ export default function ImpactSection() {
                     alt={logo.name}
                     width={28}
                     height={28}
-                    className="grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition duration-300"
+                    className="h-6 w-auto grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition duration-300"
                   />
                   <span className="text-xs md:text-sm font-light whitespace-nowrap">
                     {logo.name}

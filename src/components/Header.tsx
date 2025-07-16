@@ -5,6 +5,8 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { Menu, X, ChevronDown, ChevronUp } from 'lucide-react'
 import HeaderDropdown from './HeaderDropdown';
+import { motion } from 'framer-motion'
+
 
 import {
   Rocket,
@@ -169,86 +171,104 @@ const toggleDropdown = (section: DropdownKey) => {
       </div>
 
       {/* Mobile Menu Fullscreen Drawer */}
-      {menuOpen && (
-        <div className="fixed top-0 left-0 w-full h-screen z-[999] bg-[#0c021f] text-white px-4 py-6 flex flex-col justify-between overflow-y-auto">
-          {/* Logo and Close Button */}
-          <div className="flex justify-between items-center mb-6">
-            <Link href="/" className="flex items-center">
-              <div className="relative h-[40px] w-[140px]">
-                <Image
-                  src="/actora-logoo.png"
-                  alt="Actora Logo"
-                  fill
-                  className="object-contain"
-                  priority
-                />
-              </div>
-            </Link>
-
-            <button onClick={() => setMenuOpen(false)} className="text-white">
-              <X size={24} />
-            </button>
+{menuOpen && (
+  <div className="fixed inset-0 z-[999] bg-[#0c021f] text-white px-4 py-6 flex flex-col justify-between overflow-y-auto">
+    {/* Sticky Header: Logo and Close Button */}
+    <div className="sticky top-0 bg-[#0c021f] z-10 pb-4">
+      <div className="flex justify-between items-center">
+        <Link href="/" onClick={() => setMenuOpen(false)} className="flex items-center">
+          <div className="relative h-[36px] w-[130px]">
+            <Image
+              src="/actora-logoo.png"
+              alt="Actora Logo"
+              fill
+              className="object-contain"
+              priority
+            />
           </div>
+        </Link>
 
-          {/* Dropdown Navigation */}
-          {[
-            { label: 'Product', items: productMenu },
-            { label: 'Explore', items: exploreMenu },
-            { label: 'Ecosystem', items: ecosystemMenu },
-            { label: 'Company', items: companyMenu },
-          ].map(({ label, items }) => (
-            <div key={label} className="border-b border-white/10 pb-2 mb-3">
-              <button
-                onClick={() => toggleDropdown(label.toLowerCase() as DropdownKey)}
-                className="flex justify-between items-center w-full py-2 text-sm font-medium"
-              >
-                {label}
-                {dropdowns[label.toLowerCase() as keyof typeof dropdowns] ? (
-                  <ChevronUp size={18} className="text-purple-400" />
-                ) : (
-                  <ChevronDown size={18} className="text-purple-400" />
-                )}
-              </button>
+        <button
+          onClick={() => setMenuOpen(false)}
+          className="text-white focus:outline-none focus:ring-2 focus:ring-purple-500 rounded"
+          aria-label="Close menu"
+        >
+          <X size={26} />
+        </button>
+      </div>
+    </div>
 
-              {dropdowns[label.toLowerCase() as keyof typeof dropdowns] && (
-                <div className="mt-1 flex flex-col gap-2">
-                  {items.map(({ title, link, icon }) => (
-                    <Link
-                      key={title}
-                      href={link}
-                      onClick={() => setMenuOpen(false)}
-                      className="flex items-center gap-2 px-2 py-2 rounded hover:bg-white/10 transition"
-                    >
-                      <div className="w-4 h-4 text-purple-400 flex items-center justify-center">
-                        {icon}
-                      </div>
-                      <span className="text-sm">{title}</span>
-                    </Link>
-                  ))}
-                </div>
+    {/* Navigation Links with Dropdowns */}
+    <nav className="flex flex-col gap-6 mt-4">
+      {[
+        { label: 'Product', items: productMenu },
+        { label: 'Explore', items: exploreMenu },
+        { label: 'Ecosystem', items: ecosystemMenu },
+        { label: 'Company', items: companyMenu },
+      ].map(({ label, items }) => {
+        const key = label.toLowerCase() as DropdownKey
+        const isOpen = dropdowns[key]
+
+        return (
+          <div key={label} className="border-b border-white/10 pb-2">
+            <button
+              onClick={() => toggleDropdown(key)}
+              className="w-full flex justify-between items-center py-2 text-base font-medium"
+              aria-expanded={isOpen}
+            >
+              {label}
+              {isOpen ? (
+                <ChevronUp size={18} className="text-purple-400" />
+              ) : (
+                <ChevronDown size={18} className="text-purple-400" />
               )}
-            </div>
-          ))}
+            </button>
 
-          {/* Call-to-Action Buttons */}
-          <div className="mt-10 space-y-3">
-            <Link
-              href="/app"
-              onClick={() => setMenuOpen(false)}
-              className="block w-full bg-[#7c3aed] text-center py-2.5 rounded-full text-sm font-medium"
+            <motion.div
+              initial={false}
+              animate={{ height: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
+              transition={{ duration: 0.3 }}
+              className={`overflow-hidden ${isOpen ? 'mt-2' : ''}`}
             >
-              Launch App
-            </Link>
-            <Link
-              href="/alpha"
-              onClick={() => setMenuOpen(false)}
-              className="block w-full border border-white text-center py-2.5 rounded-full text-sm font-medium"
-            >
-              Client Dashboard
-            </Link>
+              <div className="flex flex-col gap-2">
+                {items.map(({ title, link, icon }) => (
+                  <Link
+                    key={title}
+                    href={link}
+                    onClick={() => setMenuOpen(false)}
+                    className="flex items-center gap-3 px-2 py-2 rounded hover:bg-white/10 transition text-sm"
+                  >
+                    <span className="text-purple-400">{icon}</span>
+                    <span>{title}</span>
+                  </Link>
+                ))}
+              </div>
+            </motion.div>
           </div>
-        </div>
-      )}
+        )
+      })}
+    </nav>
+
+    {/* CTA Buttons */}
+    <div className="mt-10 space-y-4">
+      <Link
+        href="/app"
+        onClick={() => setMenuOpen(false)}
+        className="block w-full bg-purple-600 hover:bg-purple-500 transition text-center py-3 rounded-full text-sm font-medium"
+      >
+        Launch App
+      </Link>
+      <Link
+        href="/alpha"
+        onClick={() => setMenuOpen(false)}
+        className="block w-full border border-white hover:bg-white/10 transition text-center py-3 rounded-full text-sm font-medium"
+      >
+        Client Dashboard
+      </Link>
+    </div>
+  </div>
+)}
+
     </header>
   )
 }
