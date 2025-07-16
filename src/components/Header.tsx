@@ -173,12 +173,13 @@ const toggleDropdown = (section: DropdownKey) => {
         <AnimatePresence>
         {menuOpen && (
         <motion.div
-          key="mobile-menu"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[9999] bg-[#0c021f] text-white px-4 pt-4 pb-6 flex flex-col justify-between overflow-y-auto h-screen"
-        >
+  key="mobile-menu"
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  exit={{ opacity: 0 }}
+  className="fixed inset-0 z-[9999] bg-[#0c021f] text-white px-4 pt-4 pb-6 flex flex-col h-screen"
+>
+
         {/* Sticky Header */}
         <div className="sticky top-0 bg-[#0c021f] z-10 pb-4">
           <div className="flex justify-between items-center">
@@ -262,22 +263,22 @@ const toggleDropdown = (section: DropdownKey) => {
         </nav>
 
         {/* CTA Buttons */}
-        <div className="mt-10 space-y-4">
-          <Link
-            href="/app"
-            onClick={() => setMenuOpen(false)}
-            className="block w-full bg-purple-600 hover:bg-purple-500 transition text-center py-3 rounded-full text-sm font-medium"
-          >
-            Launch App
-          </Link>
-          <Link
-            href="/alpha"
-            onClick={() => setMenuOpen(false)}
-            className="block w-full border border-white hover:bg-white/10 transition text-center py-3 rounded-full text-sm font-medium"
-          >
-            Client Dashboard
-          </Link>
-        </div>
+        <div className="mt-6 space-y-4">
+  <Link
+    href="/app"
+    onClick={() => setMenuOpen(false)}
+    className="block w-full bg-purple-600 hover:bg-purple-500 transition text-center py-3 rounded-full text-sm font-medium"
+  >
+    Launch App
+  </Link>
+  <Link
+    href="/alpha"
+    onClick={() => setMenuOpen(false)}
+    className="block w-full border border-white hover:bg-white/10 transition text-center py-3 rounded-full text-sm font-medium"
+  >
+    Client Dashboard
+  </Link>
+</div>
       </motion.div>
     )}
 </AnimatePresence>
