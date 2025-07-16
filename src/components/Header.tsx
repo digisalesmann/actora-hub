@@ -183,15 +183,15 @@ const toggleDropdown = (section: DropdownKey) => {
         <div className="sticky top-0 bg-[#0c021f] z-10 pb-4">
           <div className="flex justify-between items-center">
             <Link href="/" onClick={() => setMenuOpen(false)} className="flex items-center">
-              <div className="relative h-[36px] w-[130px]">
-                <Image
-                  src="/actora-logoo.png"
-                  alt="Actora Logo"
-                  fill
-                  className="object-contain"
-                  priority
-                />
-              </div>
+              <div className="relative h-[56px] w-[180px]">
+              <Image
+                src="/actora-logoo.png"
+                alt="Actora Logo"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
             </Link>
 
             <button
