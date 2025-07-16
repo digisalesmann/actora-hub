@@ -58,12 +58,12 @@ export default function HeroSection() {
         </motion.div>
       </div>
 
-      {/* Floating Social Links */}
+      {/* Floating Social Links (Fixed to viewport) */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.8 }}
-        className="absolute bottom-6 right-6 bg-white/10 border border-white/20 backdrop-blur-md px-4 py-2 rounded-xl flex items-center gap-4 z-20"
+        className="fixed bottom-12 right-6 bg-white/10 border border-white/20 backdrop-blur-md px-4 py-2 rounded-xl flex items-center gap-4 z-50"
       >
         <Link href="https://x.com" className="hover:opacity-80" aria-label="Twitter / X">
           <svg

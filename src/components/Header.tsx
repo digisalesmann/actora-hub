@@ -170,11 +170,11 @@ const toggleDropdown = (section: DropdownKey) => {
 
       {/* Mobile Menu Fullscreen Drawer */}
       {menuOpen && (
-        <div className="fixed top-0 left-0 w-full h-screen z-[999] bg-[#0c021f] text-white px-6 py-8 flex flex-col justify-between overflow-y-auto">
-          {/* Top - Logo & Close */}
-          <div className="flex justify-between items-center mb-8 px-0">
-            <Link href="/" className="flex items-center ml-[-12px]">
-              <div className="relative h-[48px] w-[160px] md:h-[60px] md:w-[200px]">
+        <div className="fixed top-0 left-0 w-full h-screen z-[999] bg-[#0c021f] text-white px-4 py-6 flex flex-col justify-between overflow-y-auto">
+          {/* Logo and Close Button */}
+          <div className="flex justify-between items-center mb-6">
+            <Link href="/" className="flex items-center">
+              <div className="relative h-[40px] w-[140px]">
                 <Image
                   src="/actora-logoo.png"
                   alt="Actora Logo"
@@ -185,8 +185,8 @@ const toggleDropdown = (section: DropdownKey) => {
               </div>
             </Link>
 
-            <button onClick={() => setMenuOpen(false)}>
-              <X size={28} />
+            <button onClick={() => setMenuOpen(false)} className="text-white">
+              <X size={24} />
             </button>
           </div>
 
@@ -197,32 +197,32 @@ const toggleDropdown = (section: DropdownKey) => {
             { label: 'Ecosystem', items: ecosystemMenu },
             { label: 'Company', items: companyMenu },
           ].map(({ label, items }) => (
-            <div key={label} className="border-b border-white/10 pb-2">
+            <div key={label} className="border-b border-white/10 pb-2 mb-3">
               <button
                 onClick={() => toggleDropdown(label.toLowerCase() as DropdownKey)}
-                className="flex justify-between items-center w-full py-2 text-[15px] font-medium text-white"
+                className="flex justify-between items-center w-full py-2 text-sm font-medium"
               >
                 {label}
                 {dropdowns[label.toLowerCase() as keyof typeof dropdowns] ? (
-                  <ChevronUp className="text-purple-400" />
+                  <ChevronUp size={18} className="text-purple-400" />
                 ) : (
-                  <ChevronDown className="text-purple-400" />
+                  <ChevronDown size={18} className="text-purple-400" />
                 )}
               </button>
 
               {dropdowns[label.toLowerCase() as keyof typeof dropdowns] && (
-                <div className="mt-2 flex flex-col gap-3">
+                <div className="mt-1 flex flex-col gap-2">
                   {items.map(({ title, link, icon }) => (
                     <Link
                       key={title}
                       href={link}
                       onClick={() => setMenuOpen(false)}
-                      className="flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-white/10 transition"
+                      className="flex items-center gap-2 px-2 py-2 rounded hover:bg-white/10 transition"
                     >
-                      <div className="w-5 h-5 text-purple-400 flex items-center justify-center">
+                      <div className="w-4 h-4 text-purple-400 flex items-center justify-center">
                         {icon}
                       </div>
-                      <span className="text-[14px] text-white font-normal">{title}</span>
+                      <span className="text-sm">{title}</span>
                     </Link>
                   ))}
                 </div>
@@ -230,19 +230,19 @@ const toggleDropdown = (section: DropdownKey) => {
             </div>
           ))}
 
-          {/* Buttons */}
-          <div className="mt-12 space-y-4">
+          {/* Call-to-Action Buttons */}
+          <div className="mt-10 space-y-3">
             <Link
               href="/app"
               onClick={() => setMenuOpen(false)}
-              className="block w-full bg-[#7c3aed] text-center py-3 rounded-full font-medium text-white text-[16px]"
+              className="block w-full bg-[#7c3aed] text-center py-2.5 rounded-full text-sm font-medium"
             >
-              Launch app
+              Launch App
             </Link>
             <Link
               href="/alpha"
               onClick={() => setMenuOpen(false)}
-              className="block w-full border border-white text-center py-3 rounded-full font-medium text-white text-[16px]"
+              className="block w-full border border-white text-center py-2.5 rounded-full text-sm font-medium"
             >
               Client Dashboard
             </Link>
