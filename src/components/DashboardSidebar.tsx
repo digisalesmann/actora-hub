@@ -48,7 +48,7 @@ const DashboardSidebar: FC<DashboardSidebarProps> = ({ open, onToggle }) => {
 
   return (
     <aside
-        className={`fixed top-18 left-0 z-40 h-[calc(100vh-64px)] bg-[#14002e] border-r border-white/10 transition-all duration-300 ${
+        className={`hidden sm:block fixed top-18 left-0 z-40 h-[calc(100vh-64px)] bg-[#14002e] border-r border-white/10 transition-all duration-300 ${
             open ? 'w-64' : 'w-16'
         } overflow-hidden`}
     >
