@@ -264,7 +264,7 @@ const toggleDropdown = (section: DropdownKey) => {
         {/* CTA Buttons */}
         <div className="mt-6 pt-12 space-y-4">
           <Link
-            href="/app"
+            href="/dashboard"
             onClick={() => setMenuOpen(false)}
             className="block w-full bg-purple-600 hover:bg-purple-500 transition text-center py-3 rounded-full text-sm font-medium"
           >
