@@ -153,7 +153,7 @@ const toggleDropdown = (section: DropdownKey) => {
               Join Alpha
             </Link>
             <Link
-              href="/app"
+              href="/dashboard"
               className="bg-[#7c3aed] hover:bg-[#9b4dff] text-white px-6 py-2.5 rounded-full text-[15px] font-medium transition"
             >
               Launch App
