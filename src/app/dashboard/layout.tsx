@@ -12,14 +12,20 @@ export default function DashboardLayout({
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   return (
-    <div className="flex h-screen overflow-hidden bg-[#0a011a] text-white">
-      {/* Sidebar (visible on md+, slide over on mobile) */}
+    <div className="flex min-h-screen overflow-x-hidden bg-[#0a011a] text-white">
+      {/* Sidebar (persistent from sm breakpoint) */}
       <DashboardSidebar open={sidebarOpen} onToggle={() => setSidebarOpen(false)} />
 
-      {/* Main content area */}
+      {/* Main Content */}
       <div className="flex flex-col flex-1">
         <DashboardHeader sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-        <main className="flex-1 overflow-y-auto p-6">{children}</main>
+        <main
+          className={`flex-1 pt-[90px] px-4 sm:px-6 pb-10 transition-all duration-300 ${
+            sidebarOpen ? 'sm:pl-64' : 'sm:pl-20'
+          }`}
+        >
+          <div className="max-w-7xl mx-auto space-y-8">{children}</div>
+        </main>
       </div>
     </div>
   )

@@ -65,7 +65,7 @@ export default function WhyActoraSection() {
           transition={{ delay: 0.2, duration: 0.8 }}
           className="text-white/60 text-lg max-w-3xl mx-auto mb-20"
         >
-          Actora isn’t just a platform — it’s your programmable engine for growth, coordination, and retention. Built for builders. Trusted by networks.
+          Actora isn’t just a platform → it’s your programmable engine for growth, coordination, and retention. Built for builders. Trusted by networks.
         </motion.p>
 
         <div className="grid md:grid-cols-2 gap-12 text-left">

@@ -15,7 +15,7 @@ export default function Footer() {
             <Image src="/actora-logoo.png" alt="Actora Logo" fill className="object-contain" />
           </div>
           <p className="text-white/60 mb-6 text-sm leading-relaxed max-w-sm">
-            Actora is a growth coordination platform for Web3 teams and ecosystems — build faster, grow smarter, and activate your community like never before.
+            Actora is a growth coordination platform for Web3 teams and ecosystems → build faster, grow smarter, and activate your community like never before.
           </p>
           <Link
             href="/newsletter"

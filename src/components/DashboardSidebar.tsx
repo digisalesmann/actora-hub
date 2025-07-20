@@ -1,17 +1,19 @@
 'use client'
 
-import { FiX } from 'react-icons/fi'
 import {
-  Home,
+  Search,
   Users,
-  Trophy,
-  Megaphone,
-  Gamepad,
+  BarChart3,
+  Coins,
+  LayoutGrid,
+  Layers3,
+  Settings,
   Rocket,
-  DollarSign,
-  ArrowRightLeft,
-  BarChart,
-  Settings
+  Star,
+  Signal,
+  Gamepad,
+  BarChart2,
+  LucideIcon
 } from 'lucide-react'
 import Link from 'next/link'
 import type { FC } from 'react'
@@ -34,21 +36,21 @@ const DashboardSidebar: FC<DashboardSidebarProps> = ({ open, onToggle }) => {
   if (!isMounted) return null
 
   const sidebarItems = [
-    { label: 'Discover', href: '/dashboard', icon: Home },
-    { label: 'Community', href: '/community', icon: Users },
-    { label: 'Reward', href: '/reward', icon: Trophy },
-    { label: 'Signal', href: '/signal', icon: Megaphone },
-    { label: 'Play', href: '/play', icon: Gamepad },
-    { label: 'Launchpad', href: '/launchpad', icon: Rocket },
-    { label: 'Staking', href: '/staking', icon: DollarSign },
-    { label: 'Trade', href: '/trade', icon: ArrowRightLeft },
-    { label: 'Analytics', href: '/analytics', icon: BarChart },
-    { label: 'Settings', href: '/settings', icon: Settings }
-  ]
+  { label: 'Discover', href: '/dashboard', icon: Search },
+  { label: 'Community', href: '/community', icon: Users },
+  { label: 'Reward', href: '/rewards', icon: Star },
+  { label: 'Signal', href: '/signal', icon: Signal },
+  { label: 'Play', href: '/play', icon: Gamepad },
+  { label: 'Launchpad', href: '/launchpad', icon: Rocket },
+  { label: 'Staking', href: '/staking', icon: Coins },
+  { label: 'Trade', href: '/trade', icon: LayoutGrid },
+  { label: 'Analytics', href: '/analytics', icon: BarChart3 },
+  { label: 'Settings', href: '/settings', icon: Settings }
+]
 
   return (
     <aside
-        className={`hidden sm:block fixed top-18 left-0 z-40 h-[calc(100vh-64px)] bg-[#14002e] border-r border-white/10 transition-all duration-300 ${
+        className={`hidden sm:block fixed top-[80px] left-0 z-40 h-[calc(100vh-64px)] bg-[#14002e] border-r border-white/10 transition-all duration-300 ${
             open ? 'w-64' : 'w-16'
         } overflow-hidden`}
     >

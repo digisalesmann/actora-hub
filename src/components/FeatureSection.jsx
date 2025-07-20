@@ -9,21 +9,21 @@ const features = [
     icon: <FaCubes size={28} className="text-purple-400" />,
     description:
       'Kickstart your Web3 idea with Actora\'s low-code tools and tokenized engagement flows. Go from concept to launch in days.',
-    image: '/illustrations/cool.png',
+    image: '/illustrations/launch.png',
   },
   {
     title: 'Actora Signal',
     icon: <FaBolt size={28} className="text-pink-400" />,
     description:
       'Plug into real-time growth analytics. Signal tracks performance across quests, campaigns, and onchain touchpoints.',
-    image: '/illustrations/signal.png',
+    image: '/illustrations/sig.png',
   },
   {
     title: 'Actora Mesh',
     icon: <FaGlobe size={28} className="text-blue-400" />,
     description:
       'Your social layer for Web3 communities. Incentivize referrals, auto-distribute rewards, and grow through networked effects.',
-    image: '/illustrations/mesh.png',
+    image: '/illustrations/meshh.png',
   },
 ]
 

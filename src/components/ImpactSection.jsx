@@ -16,77 +16,70 @@ export default function ImpactSection() {
     { name: 'Labs', src: '/logos/0g.svg' },
   ]
 
-  const formatValue = (value) => {
-    if (value >= 1000000) return (value / 1000000).toFixed(1) + 'm'
-    if (value >= 1000) return (value / 1000).toFixed(1) + 'k'
-    return value
-  }
-
   const stats = [
-    { icon: <Users size={28} />, label: 'Users', value: 4000 },
-    { icon: <BadgeCheck size={28} />, label: 'Credentials', value: 120000 },
-    { icon: <Layers size={28} />, label: 'Projects', value: 380 },
-    { icon: <Globe size={28} />, label: 'Community', value: 1200000 },
+    { icon: Users, label: 'Users', value: 4000 },
+    { icon: BadgeCheck, label: 'Credentials', value: 120000 },
+    { icon: Layers, label: 'Projects', value: 380 },
+    { icon: Globe, label: 'Community', value: 1200000 },
   ]
 
   return (
-    <section className="relative z-10 py-20 md:py-32 bg-gradient-to-br from-[#0c021f] to-[#1a0730] text-white overflow-hidden">
+    <section className="relative z-10 py-24 px-6 md:px-12 bg-gradient-to-br from-[#0c021f] to-[#1a0730] text-white overflow-hidden">
       {/* Glows */}
       <div className="absolute -top-10 -left-10 w-[400px] h-[400px] bg-purple-500 opacity-20 blur-3xl rounded-full z-0" />
       <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-pink-500 opacity-10 blur-2xl rounded-full z-0" />
 
-      <div className="relative z-10 max-w-7xl mx-auto text-center px-6 md:px-12">
-        {/* Heading */}
+      <div className="relative z-10 max-w-7xl mx-auto text-center">
+        {/* Title */}
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-xl md:text-3xl font-medium mb-12 md:mb-20"
+          className="text-2xl md:text-4xl font-semibold mb-14"
         >
           Trusted by Web3 Builders & Visionaries
         </motion.h2>
 
         {/* Infinite Logos */}
-        <div className="overflow-hidden mb-20">
-          <div className="relative w-full">
-            <div className="whitespace-nowrap animate-scroll flex gap-12 md:gap-20 w-max items-center">
-              {logos.concat(logos).map((logo, i) => (
-                <div
-                  key={i}
-                  className="flex items-center gap-2 text-white/60 hover:text-white transition min-w-fit"
-                >
-                  <Image
-                    src={logo.src}
-                    alt={logo.name}
-                    width={28}
-                    height={28}
-                    className="h-6 w-auto grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition duration-300"
-                  />
-                  <span className="text-xs md:text-sm font-light whitespace-nowrap">
-                    {logo.name}
-                  </span>
-                </div>
-              ))}
-            </div>
+        <div className="overflow-hidden relative mb-20">
+          <div className="whitespace-nowrap animate-scroll flex gap-12 md:gap-20 w-max items-center relative z-20">
+            {logos.concat(logos).map((logo, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-2 text-white/60 hover:text-white transition min-w-fit"
+              >
+                <Image
+                  src={logo.src}
+                  alt={logo.name}
+                  width={28}
+                  height={28}
+                  className="h-6 w-auto grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition duration-300"
+                />
+                <span className="text-xs md:text-sm font-light whitespace-nowrap">
+                  {logo.name}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Animated Full Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-16">
+        {/* Stats Cards */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
           {stats.map((stat, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.15 }}
-              className="flex flex-col items-center"
+              className="bg-white/5 border border-white/10 rounded-xl backdrop-blur-md p-6 text-center shadow hover:shadow-purple-500/20 transition"
             >
-              <div className="mb-3 text-purple-400">{stat.icon}</div>
-              <div className="text-2xl md:text-5xl font-bold">
-                <span className="block md:hidden">{formatValue(stat.value)}</span>
-                <span className="hidden md:block">
-                  <CountUp end={stat.value} duration={2} separator="," />
-                </span>
+              <div className="w-12 h-12 flex items-center justify-center rounded-full bg-white/10 mx-auto mb-3">
+                <stat.icon size={24} className="text-purple-400" />
+              </div>
+              <div className="text-2xl md:text-4xl font-bold">
+                <CountUp end={stat.value} duration={2} separator="," />
               </div>
               <div className="text-white/50 text-sm md:text-base mt-1">
                 {stat.label}
@@ -96,7 +89,7 @@ export default function ImpactSection() {
         </div>
       </div>
 
-      {/* Smooth Scrolling CSS */}
+      {/* Scroll animation */}
       <style jsx>{`
         @keyframes scroll {
           0% {

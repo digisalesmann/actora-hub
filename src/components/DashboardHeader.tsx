@@ -35,7 +35,7 @@ export default function DashboardHeader({ sidebarOpen, setSidebarOpen }: Dashboa
   }, [])
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-gradient-to-br from-[#0c021f]/90 to-[#1a0730]/90 backdrop-blur-md border-b border-white/10 px-4 py-3 sm:px-6 sm:py-4">
+    <header className="fixed top-0 left-0 w-full z-50 h-20 bg-gradient-to-br from-[#0c021f]/90 to-[#1a0730]/90 backdrop-blur-md border-b border-white/10 px-4 py-3 sm:px-6 sm:py-4">
       <div className="flex items-center justify-between">
         {/* LEFT SECTION: LOGO & TOGGLES */}
         <div className="flex items-center gap-4">
