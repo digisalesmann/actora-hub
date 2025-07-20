@@ -3,15 +3,12 @@
 import Image from 'next/image'
 import { Rocket, BarChart3, UserPlus2, Coins } from 'lucide-react'
 
-export default function DashboardHero({ sidebarOpen }: { sidebarOpen: boolean }) {
+export default function DashboardHero() {
   return (
     <section
-      className={`transition-all duration-300
-        ${
-          sidebarOpen ? 'md:pl-64' : 'md:pl-16'
-        } pl-4 pr-4 md:pr-8 pt-6 sm:pt-10 text-white
-        bg-gradient-to-br from-[#150528]/80 to-[#230938]/90
-        rounded-2xl border border-white/10 shadow-xl backdrop-blur-md`}
+      className="transition-all duration-300 px-4 md:px-8 pt-6 sm:pt-10 text-white
+      bg-gradient-to-br from-[#150528]/80 to-[#230938]/90
+      rounded-2xl border border-white/10 shadow-xl backdrop-blur-md"
     >
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-8">
         {/* Left: Welcome + CTA */}

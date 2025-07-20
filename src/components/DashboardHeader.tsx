@@ -7,6 +7,7 @@ import { FiMenu, FiSearch, FiSmartphone, FiX } from 'react-icons/fi'
 import { motion, AnimatePresence } from 'framer-motion'
 import SearchModal from './SearchModal'
 import { navLinks } from '@/lib/navLinks'
+import { useSidebar } from '@/context/SidebarContext'
 
 type DashboardHeaderProps = {
   sidebarOpen: boolean
