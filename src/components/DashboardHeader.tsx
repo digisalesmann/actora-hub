@@ -6,8 +6,8 @@ import Image from 'next/image'
 import { FiMenu, FiSearch, FiSmartphone, FiX } from 'react-icons/fi'
 import { motion, AnimatePresence } from 'framer-motion'
 import SearchModal from './SearchModal'
+import ActoraLoginModal from './ActoraLoginModal'
 import { navLinks } from '@/lib/navLinks'
-import { useSidebar } from '@/context/SidebarContext'
 
 type DashboardHeaderProps = {
   sidebarOpen: boolean
@@ -18,6 +18,7 @@ export default function DashboardHeader({ sidebarOpen, setSidebarOpen }: Dashboa
   const [mobileOpen, setMobileOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const [appModalOpen, setAppModalOpen] = useState(false)
+  const [loginOpen, setLoginOpen] = useState(false) 
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -29,6 +30,7 @@ export default function DashboardHeader({ sidebarOpen, setSidebarOpen }: Dashboa
         setSearchOpen(false)
         setAppModalOpen(false)
         setMobileOpen(false)
+        setLoginOpen(false)
       }
     }
     window.addEventListener('keydown', handleKeyDown)
@@ -106,17 +108,17 @@ export default function DashboardHeader({ sidebarOpen, setSidebarOpen }: Dashboa
 
           {/* Auth Buttons (Desktop Only) */}
           <div className="hidden sm:flex items-center bg-white/10 rounded-full p-1">
-            <Link
-              href="/login"
+          <button
+              onClick={() => setLoginOpen(true)}
               className="px-4 py-1.5 rounded-full text-sm text-white hover:bg-white/20"
             >
               Log in
-            </Link>
+          </button>
             <Link
               href="/signup"
               className="px-4 py-1.5 rounded-full text-sm bg-purple-600 hover:bg-purple-700 text-white ml-1 shadow-md"
             >
-              Sign up
+              Network
             </Link>
           </div>
         </div>
@@ -147,12 +149,12 @@ export default function DashboardHeader({ sidebarOpen, setSidebarOpen }: Dashboa
             </div>
 
             <div className="flex flex-col gap-3 pt-4 border-t border-white/10">
-              <Link
-                href="/login"
-                className="w-full text-center bg-white/10 hover:bg-white/20 text-white py-2 rounded-full text-sm"
+            <button
+                onClick={() => setLoginOpen(true)}
+                className="px-4 py-1.5 rounded-full text-sm text-white hover:bg-white/20"
               >
                 Log in
-              </Link>
+            </button>
               <Link
                 href="/signup"
                 className="w-full text-center bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-full text-sm"
@@ -164,8 +166,9 @@ export default function DashboardHeader({ sidebarOpen, setSidebarOpen }: Dashboa
         )}
       </AnimatePresence>
 
-      {/* Search Modal */}
+      {/* Modals */}
       <SearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
+      <ActoraLoginModal isOpen={loginOpen} onClose={() => setLoginOpen(false)} />
     </header>
   )
 }
