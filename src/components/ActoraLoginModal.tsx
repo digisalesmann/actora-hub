@@ -25,41 +25,48 @@ export default function ActoraLoginModal({ isOpen, onClose }: { isOpen: boolean;
 
   const wallets: Record<string, { name: string; logo: string; bg?: string }[]> = {
     EVM: [
-      { name: 'MetaMask', logo: 'https://raw.githubusercontent.com/MetaMask/brand-resources/master/SVG/metamask-fox.svg', bg: 'bg-gradient-to-r from-orange-400/10 to-[#0b0c10]' },
-      { name: 'Coinbase Wallet', logo: '/wallets/coinbase.png', bg: 'bg-gradient-to-r from-blue-500/10 to-[#0b0c10]' },
-      { name: 'Binance Wallet', logo: '/wallets/binance.png', bg: 'bg-gradient-to-r from-yellow-400/10 to-[#0b0c10]' },
-      { name: 'OKX', logo: '/wallets/okx.png', bg: 'bg-gradient-to-r from-gray-800/10 to-[#0b0c10]' },
-      { name: 'Zerion', logo: '/wallets/zerion.png', bg: 'bg-gradient-to-r from-blue-400/10 to-[#0b0c10]' },
-      { name: 'Rabby', logo: '/wallets/rabby.png', bg: 'bg-gradient-to-r from-pink-500/10 to-[#0b0c10]' },
-      { name: 'Taho', logo: '/wallets/taho.png', bg: 'bg-gradient-to-r from-purple-600/10 to-[#0b0c10]' }
+      { name: 'MetaMask', logo: '/wallets/metamask.png', bg: 'bg-gradient-to-r from-orange-400/10 to-[#0b0c10]' },
+      { name: 'Coinbase Wallet', logo: '/wallets/CoinBase.png', bg: 'bg-gradient-to-r from-blue-500/10 to-[#0b0c10]' },
+      { name: 'Binance Wallet', logo: '/wallets/bnb.svg', bg: 'bg-gradient-to-r from-yellow-400/10 to-[#0b0c10]' },
+      { name: 'OKX', logo: '/wallets/okx.svg', bg: 'bg-gradient-to-r from-gray-800/10 to-[#0b0c10]' },
+      { name: 'Zerion', logo: '/wallets/Zerion.png', bg: 'bg-gradient-to-r from-blue-400/10 to-[#0b0c10]' },
+      { name: 'Rabby', logo: '/wallets/rabby.svg', bg: 'bg-gradient-to-r from-blue-500/10 to-[#0b0c10]' },
+      { name: 'Trust Wallet', logo: '/wallets/Trust.png', bg: 'bg-gradient-to-r from-blue-500/10 to-[#0b0c10]' }
     ],
     Solana: [
       { name: 'Phantom', logo: '/wallets/phantom.png', bg: 'bg-gradient-to-r from-purple-700/10 to-[#0b0c10]' },
-      { name: 'Solflare', logo: '/wallets/solflare.png', bg: 'bg-gradient-to-r from-orange-500/10 to-[#0b0c10]' }
+      { name: 'Solflare', logo: '/wallets/solflare.svg', bg: 'bg-gradient-to-r from-orange-500/10 to-[#0b0c10]' },
+      { name: 'Backpack', logo: '/wallets/backpack.svg', bg: 'bg-gradient-to-r from-red-500/10 to-[#0b0c10]' }
     ],
     Sei: [
-      { name: 'Compass', logo: '/wallets/sei.png', bg: 'bg-gradient-to-r from-gray-700/10 to-[#0b0c10]' },
-      { name: 'Fin Wallet', logo: '/wallets/sei.png', bg: 'bg-gradient-to-r from-gray-700/10 to-[#0b0c10]' }
+      { name: 'Wallet Connect', logo: '/wallets/WalletConnect.png', bg: 'bg-gradient-to-r from-blue-700/10 to-[#0b0c10]' },
     ],
     More: [
       { name: 'Keplr', logo: '/wallets/keplr.png', bg: 'bg-gradient-to-r from-indigo-600/10 to-[#0b0c10]' },
-      { name: 'XDEFI', logo: '/wallets/xdefi.png', bg: 'bg-gradient-to-r from-gray-900/10 to-[#0b0c10]' },
-      { name: 'Ledger', logo: '/wallets/ledger.png', bg: 'bg-gradient-to-r from-slate-800/10 to-[#0b0c10]' }
+      { name: 'Sui', logo: '/wallets/sui.svg', bg: 'bg-gradient-to-r from-blue-900/10 to-[#0b0c10]' },
+      { name: 'Ton', logo: '/wallets/ton.svg', bg: 'bg-gradient-to-r from-blue-800/10 to-[#0b0c10]' },
+      { name: 'Aptos', logo: '/wallets/aptos.svg', bg: 'bg-gradient-to-r from-gray-800/10 to-[#0b0c10]' }
     ]
   }
 
   const renderWalletOptions = () => (
-    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-4 max-h-[320px] overflow-y-auto pr-1 no-scrollbar">
-      {wallets[selectedNetwork].map((wallet, index) => (
+    <div className="flex flex-col sm:grid sm:grid-cols-2 sm:gap-3 mt-4 max-h-[320px] overflow-y-auto pr-1 no-scrollbar">
+      {(wallets[selectedNetwork] || []).map((wallet, index) => (
         <button
           key={index}
-          className={`flex items-center justify-between px-4 py-2 border border-white/10 hover:bg-white/10 transition text-left rounded-md ${wallet.bg}`}
+          className={`cursor-pointer flex items-center justify-between w-full h-[60px] px-4 py-2 border border-white/10 hover:bg-white/10 transition text-left rounded-md ${wallet.bg} gap-2`}
         >
-          <div className="flex items-center gap-3">
-            <Image src={wallet.logo} alt={wallet.name} width={20} height={20} className="rounded bg-white p-0.5" />
-            <span className="text-sm font-medium text-white truncate">{wallet.name}</span>
+          <div className="flex items-center gap-3 min-w-0 flex-1">
+            <Image
+              src={wallet.logo}
+              alt={wallet.name}
+              width={32}
+              height={32}
+              className="rounded flex-shrink-0"
+            />
+            <span className="text-sm font-medium text-white truncate max-w-[150px]">{wallet.name}</span>
           </div>
-          <span className="text-xs bg-white/10 text-white/60 px-2 py-0.5 rounded">
+          <span className="text-xs bg-white/10 text-white/60 px-2 py-0.5 rounded whitespace-nowrap flex-shrink-0">
             {installedWallets.includes(wallet.name) ? 'Installed' : 'Connect'}
           </span>
         </button>
@@ -104,19 +111,35 @@ export default function ActoraLoginModal({ isOpen, onClose }: { isOpen: boolean;
                 </p>
               </div>
 
-              <div className="flex flex-wrap gap-3 overflow-x-auto pb-1">
-                {['EVM', 'Solana', 'Sei', 'More'].map((label) => (
-                  <button
-                    key={label}
-                    onClick={() => setSelectedNetwork(label as any)}
-                    className={`flex items-center gap-2 px-5 py-2 text-sm font-medium border min-w-[100px] text-center rounded-md whitespace-nowrap transition-all ${
-                      selectedNetwork === label ? 'bg-white text-black border-white' : 'bg-[#1a1a1a] border-white/20 text-white/60'
-                    }`}
-                  >
-                    <Image src={`/wallets/${label.toLowerCase()}.png`} alt={label} width={20} height={20} className="rounded-full bg-white" />
-                    <span>{label}</span>
-                  </button>
-                ))}
+              <div className="flex flex-nowrap gap-3 overflow-x-auto pb-1 scrollbar-hide">
+                {['EVM', 'Solana', 'Sei', 'More'].map((label) => {
+                  const isMore = label === 'More'
+
+                  return (
+                    <button
+                      key={label}
+                      onClick={() => setSelectedNetwork(label as any)}
+                      className={`cursor-pointer flex ${
+                        isMore ? 'justify-center' : 'items-center gap-2'
+                      } px-5 py-2 text-sm font-medium border min-w-[100px] text-center rounded-md whitespace-nowrap transition-all ${
+                        selectedNetwork === label
+                          ? 'bg-white text-black border-white'
+                          : 'bg-[#1a1a1a] border-white/20 text-white/60'
+                      }`}
+                    >
+                      {!isMore && (
+                        <Image
+                          src={`/wallets/${label.toLowerCase()}.png`}
+                          alt={label}
+                          width={20}
+                          height={20}
+                          className="rounded-full"
+                        />
+                      )}
+                      <span>{label}</span>
+                    </button>
+                  )
+                })}
               </div>
 
               {renderWalletOptions()}
@@ -124,7 +147,7 @@ export default function ActoraLoginModal({ isOpen, onClose }: { isOpen: boolean;
               <div className="border-t border-white/10 mt-8 pt-6">
                 <div className="flex justify-center gap-6 flex-wrap">
                   {[RiTwitterXFill, FaDiscord, FaEnvelope, FaTelegramPlane].map((Icon, idx) => (
-                    <div key={idx} className="w-14 h-14 bg-white/5 hover:bg-white/10 transition flex items-center justify-center rounded-full">
+                    <div key={idx} className="w-12 h-12 bg-white/5 hover:bg-white/10 transition flex items-center justify-center rounded-full">
                       <Icon size={28} className="text-white/70" />
                     </div>
                   ))}
