@@ -12,7 +12,7 @@ export default function ImpactSection() {
     { name: 'Ethereum', src: '/logos/eth.svg' },
     { name: 'Avalanche', src: '/logos/ava.svg' },
     { name: 'Solana', src: '/logos/sol.svg' },
-    { name: 'Monad', src: '/logos/mon.svg' },
+    { name: 'Monad', src: '/logos/Monad.png' },
     { name: 'Labs', src: '/logos/0g.svg' },
   ]
 

@@ -28,7 +28,7 @@ export default function ActoraLoginModal({ isOpen, onClose }: { isOpen: boolean;
       { name: 'MetaMask', logo: '/wallets/metamask.png', bg: 'bg-gradient-to-r from-orange-400/10 to-[#0b0c10]' },
       { name: 'Coinbase Wallet', logo: '/wallets/CoinBase.png', bg: 'bg-gradient-to-r from-blue-500/10 to-[#0b0c10]' },
       { name: 'Binance Wallet', logo: '/wallets/bnb.svg', bg: 'bg-gradient-to-r from-yellow-400/10 to-[#0b0c10]' },
-      { name: 'OKX', logo: '/wallets/okx.svg', bg: 'bg-gradient-to-r from-gray-800/10 to-[#0b0c10]' },
+      { name: 'OKX', logo: '/wallets/OKX.svg', bg: 'bg-gradient-to-r from-gray-800/10 to-[#0b0c10]' },
       { name: 'Zerion', logo: '/wallets/Zerion.png', bg: 'bg-gradient-to-r from-blue-400/10 to-[#0b0c10]' },
       { name: 'Rabby', logo: '/wallets/rabby.svg', bg: 'bg-gradient-to-r from-blue-500/10 to-[#0b0c10]' },
       { name: 'Trust Wallet', logo: '/wallets/Trust.png', bg: 'bg-gradient-to-r from-blue-500/10 to-[#0b0c10]' }
@@ -107,7 +107,9 @@ export default function ActoraLoginModal({ isOpen, onClose }: { isOpen: boolean;
               <div className="mb-8">
                 <Dialog.Title className="text-2xl sm:text-3xl font-bold mb-2 text-left">Log in to Actora</Dialog.Title>
                 <p className="text-sm text-white/60 text-left max-w-2xl">
-                  By logging in, you agree to our Terms of Service and Privacy Policy. Connect your wallet or social account to continue.
+                    By logging in, you agree to our{' '}
+                    <span className="text-purple-400 hover:underline cursor-pointer">Terms of Service</span> and{' '}
+                    <span className="text-purple-400 hover:underline cursor-pointer">Privacy Policy</span>. Connect your wallet or social account to continue.
                 </p>
               </div>
 
