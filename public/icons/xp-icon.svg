@@ -1,0 +1,16 @@
+<svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Reward Bar" clip-path="url(#clip0_1165_19057)">
+<path id="Subtract" d="M53.9979 27C53.9979 41.9116 41.9097 53.9999 26.998 53.9999C12.0863 53.9999 -0.00195312 41.9116 -0.00195312 27C-0.00195312 12.0883 12.0863 0 26.998 0C41.9097 0 53.9979 12.0883 53.9979 27Z" fill="url(#paint0_linear_1165_19057)"/>
+<path id="Subtract_2" opacity="0.8" d="M26.999 11.4117L31.6756 18.9002L40.499 19.206L36.3521 27.0002L40.499 34.7944L31.6756 35.1002L26.999 42.5887L22.3225 35.1002L13.499 34.7944L17.6459 27.0002L13.499 19.206L22.3225 18.9002L26.999 11.4117Z" fill="#D9D9D9"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_1165_19057" x1="-0.00195311" y1="21.87" x2="53.998" y2="21.87" gradientUnits="userSpaceOnUse">
+<stop stop-color="#3818FC"/>
+<stop offset="0.5" stop-color="#6B6BFD"/>
+<stop offset="1" stop-color="#A479FF"/>
+</linearGradient>
+<clipPath id="clip0_1165_19057">
+<rect width="54" height="54" fill="white"/>
+</clipPath>
+</defs>
+</svg>
